@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/../common/common.iml" filepath="$PROJECT_DIR$/../common/common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../dasherdancer/dasherdancer.iml" filepath="$PROJECT_DIR$/../dasherdancer/dasherdancer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../doodles/doodles.iml" filepath="$PROJECT_DIR$/../doodles/doodles.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../presentquest/presentquest.iml" filepath="$PROJECT_DIR$/../presentquest/presentquest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/rocketsleigh.iml" filepath="$PROJECT_DIR$/rocketsleigh.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../santa-tracker/santa-tracker.iml" filepath="$PROJECT_DIR$/../santa-tracker/santa-tracker.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../santa-tracker-android.iml" filepath="$PROJECT_DIR$/../santa-tracker-android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../snowdown/snowdown.iml" filepath="$PROJECT_DIR$/../snowdown/snowdown.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../village/village.iml" filepath="$PROJECT_DIR$/../village/village.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../wearable/wearable.iml" filepath="$PROJECT_DIR$/../wearable/wearable.iml" />
+    </modules>
+  </component>
+</project>

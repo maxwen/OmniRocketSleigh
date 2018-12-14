@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="Gradle: __local_aars__:/home/maxl/android/projects/santa-tracker-android/snowdown/src/main/jniLibs/libprotobuf-java-2.6-nano.jar:unspecified@jar">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../snowdown/src/main/jniLibs/libprotobuf-java-2.6-nano.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
