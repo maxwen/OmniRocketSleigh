@@ -25,19 +25,11 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.google.android.apps.santatracker.games.PlayGamesFragment;
-import com.google.android.apps.santatracker.games.SignInListener;
-import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.games.Games;
-
 import java.text.NumberFormat;
 
 
-public class EndGameActivity extends FragmentActivity implements SignInListener {
+public class EndGameActivity extends FragmentActivity {
 
-    private PlayGamesFragment mGamesFragment;
-
-    private View mSignIn;
     private View mPlayAgain;
 
     // To handle UI events like KeyDown.
@@ -65,22 +57,11 @@ public class EndGameActivity extends FragmentActivity implements SignInListener 
         final long score = getIntent().getLongExtra("score", 0);
         sv.setText(NumberFormat.getNumberInstance().format(score));
 
-        mSignIn = findViewById(R.id.play_again_gplus);
 
         if (TvUtil.isTv(this)) {
-            mSignIn.setVisibility(View.GONE);
             mPlayAgain = findViewById(R.id.play_again);
             findViewById(R.id.exit).setVisibility(View.GONE);
             findViewById(R.id.popup_view).setVisibility(View.GONE);
-        } else {
-            mGamesFragment = PlayGamesFragment.getInstance(this, this);
-
-            if (mGamesFragment.isSignedIn()) {
-                mSignIn.setVisibility(View.GONE);
-                updateAchievementsAndLeaderboard();
-            } else {
-                mSignIn.setVisibility(View.VISIBLE);
-            }
         }
     }
 
@@ -101,32 +82,12 @@ public class EndGameActivity extends FragmentActivity implements SignInListener 
         }
     }
 
-    public void onSignIn(View view) {
-        mGamesFragment.beginUserInitiatedSignIn();
-    }
-
     public void onPlayAgain(View view) {
         Intent intent = new Intent(this.getApplicationContext(), RocketSleighActivity.class);
         intent.putExtra("nomovie", true);
         startActivity(intent);
         overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
         finish();
-    }
-
-    public void onLeaderboards(View view) {
-        if (mGamesFragment.isSignedIn()) {
-            Intent intent = Games.Leaderboards.getLeaderboardIntent(
-                    mGamesFragment.getGamesApiClient(), getString(R.string.leaderboard_rocket));
-            startActivityForResult(intent, REQUEST_LEADERBOARD);
-        }
-    }
-
-    public void onAchievements(View view) {
-        if (mGamesFragment.isSignedIn()) {
-            Intent intent = Games.Achievements.getAchievementsIntent(
-                    mGamesFragment.getGamesApiClient());
-            startActivityForResult(intent, REQUEST_ACHIEVEMENTS);
-        }
     }
 
     public void onExit(View view) {
@@ -146,18 +107,6 @@ public class EndGameActivity extends FragmentActivity implements SignInListener 
         return super.onKeyDown(keyCode, event);
     }
 
-    @Override
-    public void onSignInFailed() {
-        mSignIn.setVisibility(View.VISIBLE);
-    }
-
-    @Override
-    public void onSignInSucceeded() {
-        mSignIn.setVisibility(View.GONE);
-        updateAchievementsAndLeaderboard();
-
-    }
-
     private boolean mProcessingPlayClick = false;
     private void performPlayClick() {
         if (!mProcessingPlayClick) {
@@ -171,24 +120,6 @@ public class EndGameActivity extends FragmentActivity implements SignInListener 
                     mPlayAgain.performClick();
                 }
             }, 300);
-        }
-    }
-
-    private void updateAchievementsAndLeaderboard() {
-        if (mGamesFragment.isSignedIn()) {
-            GoogleApiClient apiClient = mGamesFragment.getGamesApiClient();
-            Bundle bundle = getIntent().getExtras();
-
-            for (int id : mAchievements) {
-                String achievementStr = getString(id);
-                if (bundle.containsKey(achievementStr)) {
-                    Games.Achievements.unlock(mGamesFragment.getGamesApiClient(), achievementStr);
-                }
-            }
-
-            Long score = bundle.getLong("score");
-            Games.Leaderboards.submitScore(apiClient,
-                    getString(R.string.leaderboard_rocket), score);
         }
     }
 }

@@ -97,54 +97,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:src="@drawable/img_finalscore_snowground_white" />
-    <RelativeLayout
-            android:id="@+id/play_again_gplus"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/gplus_layout_height"
-            android:layout_alignParentBottom="true"
-            android:background="@color/sign_in_bar"
-            android:visibility="gone" >
 
-        <RelativeLayout
-                android:id="@+id/gplus_signin_layout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_centerVertical="true"
-                android:layout_margin="5dp" >
-
-            <ImageView
-                    android:id="@+id/gplus_button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:adjustViewBounds="true"
-                    android:contentDescription="@string/why_sign_in"
-                    android:scaleType="centerInside"
-                    android:src="@drawable/signin_button"
-                    android:onClick="onSignIn" />
-
-            <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignLeft="@+id/gplus_button"
-                    android:layout_alignRight="@+id/gplus_button"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="@dimen/gplus_sign_in_text_margin_left"
-                    android:text="@string/common_signin_button_text"
-                    android:textColor="@android:color/white"
-                    android:textSize="@dimen/gplus_sign_in_text_size"
-                    android:gravity="center_horizontal"/>
-        </RelativeLayout>
-
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:text="@string/why_sign_in"
-                android:layout_toRightOf="@+id/gplus_signin_layout"
-                android:textColor="@color/sign_in_text_color"
-                android:textSize="@dimen/play_again_score_text_size" />
-    </RelativeLayout>
     <ImageView
         android:id="@+id/exit"
         android:layout_width="wrap_content"
